@@ -1,7 +1,10 @@
 #include "Platform/Platform.hpp"
+#include <cmath>
 
 int main()
 {
+
+
 
 	// create the window
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "Gravity_Simulation", sf::Style::Titlebar | sf::Style::Close);
@@ -9,10 +12,26 @@ int main()
 	window.setFramerateLimit(fps);
 	window.setKeyRepeatEnabled(false);
 
-	//const float dt { 1 / 60}; //s
-	//const float masses[] {10.f, 20.f, 30.f}; // 10^6 kg
-	//const float G {6.6743e-11}; // m³kg-1s-²
-	const float radius[] {5.f, 10.f, 15.f}; // 10^6 m
+	/*
+	Measurement Units:
+	1 pixel = 10^6m
+	dt = 10 * 1/60
+	*/
+
+
+	const double dt { 100 / fps }; //s
+	const double masses[] {10.f, 20.f, 30.f}; // 10^30 kg
+	const double G {6.6743e-11}; // m³kg-1s-²
+	const double radius[] {5.f, 10.f, 15.f}; // 10^6 m
+
+	double theta_1 {};
+	double rise_over_slope {};
+	double G_accel {};
+	double distance {};
+	double time (dt);
+
+
+
 
 	sf::Vector2f coords[] {
 		sf::Vector2f(200.f, 400.f),
@@ -33,8 +52,18 @@ int main()
 				window.close();
 		}
 
+		time += dt;
 
+		distance =
+		std::pow(std::pow((coords[1].x - coords[0].x), 2) + std::pow((coords[0].x - coords[1].x), 2), 0.5f);
 
+		rise_over_slope = (coords[1].x - coords[0].x) / (coords[1].y - coords[0].x);
+		theta_1 = std::atan(rise_over_slope);
+		G_accel = G * masses[0] * std::pow(10,30) / (std::pow(distance, 2) * std::pow(std::pow(10, 6) , 2));
+
+		coords[0].x = ((G_accel * std::pow(time, 2.f) / 2) * std::cos(theta_1)) + 200.f;
+		coords[0].y = ((G_accel * std::pow(time, 2.f) / 2) * std::sin(theta_1)) + 400.f;
+		std::cout << coords[0].x << "\n";
 		// clear the window with black color
 		window.clear(sf::Color::Black);
 
@@ -52,8 +81,8 @@ int main()
 			*radius_iterator = *radius_iterator + 1;
 		}
 
+
 		delete radius_iterator;
-		radius_iterator = nullptr;
 
 
 

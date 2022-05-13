@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed May 11 21:35:34 2022
+# Make data base, printed on Thu May 12 21:21:47 2022
 
 # Variables
 
@@ -31,7 +31,7 @@ LOCAL_GIT_DIRECTORY = /opt/github-desktop/resources/app/git
 # makefile (from 'Makefile', line 274)
 color_blue := \033[0;34m
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8df20b53-103e-4ee6-90bf-b0857d4e1eb1.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5e5a1adb-b2bb-407a-8f91-96663d507613.sock
 # makefile (from 'Makefile', line 87)
 SRC_DIR := src
 # environment
@@ -125,7 +125,7 @@ CURDIR := /home/sasaki/Documentos/GitHub/Gravitational_Force_Simulation
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -167,7 +167,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 29909
+VSCODE_PID = 24248
 # makefile (from 'Makefile', line 127)
 PRODUCTION_MACOS_BUNDLE_NAME = App
 # environment
@@ -181,7 +181,7 @@ _CFLAGS_OTHER := -fdiagnostics-color=always
 # makefile (from 'Makefile', line 185)
 _PCH_HFILE := PCH.hpp
 # environment
-SESSION_MANAGER = local/sasaki-note:@/tmp/.ICE-unix/1097,unix/sasaki-note:/tmp/.ICE-unix/1097
+SESSION_MANAGER = local/sasaki-note:@/tmp/.ICE-unix/1111,unix/sasaki-note:/tmp/.ICE-unix/1111
 # automatic
 *F = $(notdir $*)
 # makefile (from 'Makefile', line 189)
@@ -279,6 +279,7 @@ LC_TELEPHONE = pt_BR.UTF-8
 # environment
 KDE_APPLICATIONS_AS_SCOPE = 1
 # makefile (from 'Makefile', line 83)
+ 
 NAME = game.exe
 # environment
 XDG_SEAT = seat0
@@ -298,7 +299,6 @@ CLEAN_OUTPUT := true
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
 # makefile (from 'Makefile', line 236)
 POST_COMPILE = mv -f $(DEP_DIR)/$*.Td $(DEP_DIR)/$*.d && touch $@
- 
 # makefile (from 'Makefile', line 169)
 _SOURCES_IF_RC := Platform/Win32/WindowsPlatform.cpp Platform/MacOS/MacOSPlatform.cpp Platform/Unix/LinuxPlatform.cpp Main.cpp
 # 'override' directive
@@ -322,7 +322,7 @@ build_deps = 	$(foreach dep,$(BUILD_DEPENDENCIES),$(call copy_to,$(dep),$(BLD_DI
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 943
+SYSTEMD_EXEC_PID = 971
 # makefile (from 'Makefile', line 129)
 PRODUCTION_MACOS_BACKGROUND = dmg-background
 # makefile (from 'Makefile', line 275)
@@ -476,13 +476,13 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # bin/Release/obj/Platform: could not be stat'd.
 # / (device 66312, inode 2): No files, no impossibilities so far.
 # src (device 66312, inode 4480079): 1 files, no impossibilities so far.
-# . (device 66312, inode 3305613): 14 files, no impossibilities.
+# . (device 66312, inode 3305613): 16 files, no impossibilities.
 # bin/Release/dep: could not be stat'd.
 # bin/Release: could not be stat'd.
-# bin: could not be stat'd.
+# bin (device 66312, inode 4480113): No files, no impossibilities so far.
 # bin/Release/dep/Platform: could not be stat'd.
 
-# 15 files, no impossibilities in 10 directories.
+# 17 files, no impossibilities in 10 directories.
 
 # Implicit Rules
 
@@ -554,6 +554,7 @@ env/linux.all.mk:
 #  File has been updated.
 #  Successfully updated.
 
+ 
 # Not a target:
 .h:
 #  Implicit rule search has not been done.
@@ -597,7 +598,6 @@ bin/Release/dep:
 	$(if $(_CLEAN),,@printf '\$(color_blue)')
 	$(MKDIR) $@
 
- 
 bin/Release/dep/Platform/Win32:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -731,8 +731,28 @@ src/PCH.hpp:
 
 bin/Release:
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := bin/Release
+# automatic
+# * := 
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
 #  recipe to execute (from 'Makefile', line 357):
 	$(if $(_CLEAN),,@printf '\$(color_blue)')
 	$(MKDIR) $@
@@ -812,6 +832,7 @@ rmprod:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 369):
 	@printf '\n'
+ 
 	-$(_Q)rm -rf "$(if $(filter osx,$(PLATFORM)),$(PRODUCTION_FOLDER_MACOS),$(PRODUCTION_FOLDER))"
 	-$(_Q)rm -rf ~/.local/share/applications/$(NAME).desktop
 
@@ -854,28 +875,9 @@ makepch: bin/Release/obj/PCH.hpp.gch
 
 bin:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: ''
-#  File does not exist.
+#  Last modified 2022-05-11 21:52:45.825675841
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := bin
-# automatic
-# * := 
-# automatic
-# < := 
-# automatic
-# + := 
-# automatic
-# % := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# automatic
-# | := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/14=7%
+#  Successfully updated.
 #  recipe to execute (from 'Makefile', line 357):
 	$(if $(_CLEAN),,@printf '\$(color_blue)')
 	$(MKDIR) $@
@@ -895,7 +897,6 @@ bin/Release/obj:
 	$(MKDIR) $@
 
 rebuild: clean all
- 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -1007,13 +1008,13 @@ bin/Release/game.dll: bin/Release/obj/PCH.hpp.gch bin/Release/obj/Platform/Win32
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 98 / storage = 1351 B / avg = 13 B
-# current buf: size = 8162 B / used = 1351 B / count = 98 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 99 / storage = 1360 B / avg = 13 B
+# current buf: size = 8162 B / used = 1360 B / count = 99 / avg = 13 B
 
-# strcache performance: lookups = 307 / hit rate = 68%
+# strcache performance: lookups = 309 / hit rate = 67%
 # hash-table stats:
-# Load=98/8192=1%, Rehash=0, Collisions=10/307=3%
-# Finished Make data base on Wed May 11 21:35:34 2022
+# Load=99/8192=1%, Rehash=0, Collisions=10/309=3%
+# Finished Make data base on Thu May 12 21:21:47 2022
 
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
@@ -1022,7 +1023,7 @@ bin/Release/game.dll: bin/Release/obj/PCH.hpp.gch bin/Release/obj/Platform/Win32
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed May 11 21:35:34 2022
+# Make data base, printed on Thu May 12 21:21:47 2022
 
 # Variables
 
@@ -1047,7 +1048,7 @@ LOCAL_GIT_DIRECTORY = /opt/github-desktop/resources/app/git
 # makefile (from 'Makefile', line 274)
 color_blue := \033[0;34m
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-8df20b53-103e-4ee6-90bf-b0857d4e1eb1.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-5e5a1adb-b2bb-407a-8f91-96663d507613.sock
 # makefile (from 'Makefile', line 87)
 SRC_DIR := src
 # environment
@@ -1071,7 +1072,6 @@ _DIRECTORIES := bin bin/Release bin/Release/dep bin/Release/dep/Platform bin/Rel
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # makefile (from 'Makefile', line 91)
- 
 SOURCE_FILES := Platform/Win32/WindowsPlatform.cpp Platform/Win32/Resource.rc Platform/MacOS/MacOSPlatform.cpp Platform/Unix/LinuxPlatform.cpp Main.cpp
 # environment
 SNAP_INSTANCE_NAME = code
@@ -1112,6 +1112,7 @@ VSCODE_LOG_STACK = false
 %F = $(notdir $%)
 # environment
 VSCODE_CODE_CACHE_PATH = /home/sasaki/.config/Code/CachedData/da15b6fd3ef856477bf6f4fb29ba1b7af717770d
+ 
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
 # makefile (from 'Makefile', line 180)
@@ -1142,7 +1143,7 @@ CURDIR := /home/sasaki/Documentos/GitHub/Gravitational_Force_Simulation
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -1184,7 +1185,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 29909
+VSCODE_PID = 24248
 # makefile (from 'Makefile', line 127)
 PRODUCTION_MACOS_BUNDLE_NAME = App
 # environment
@@ -1198,7 +1199,7 @@ _CFLAGS_OTHER := -fdiagnostics-color=always
 # makefile (from 'Makefile', line 185)
 _PCH_HFILE := PCH.hpp
 # environment
-SESSION_MANAGER = local/sasaki-note:@/tmp/.ICE-unix/1097,unix/sasaki-note:/tmp/.ICE-unix/1097
+SESSION_MANAGER = local/sasaki-note:@/tmp/.ICE-unix/1111,unix/sasaki-note:/tmp/.ICE-unix/1111
 # automatic
 *F = $(notdir $*)
 # makefile (from 'Makefile', line 189)
@@ -1338,7 +1339,7 @@ build_deps = 	$(foreach dep,$(BUILD_DEPENDENCIES),$(call copy_to,$(dep),$(BLD_DI
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 943
+SYSTEMD_EXEC_PID = 971
 # makefile (from 'Makefile', line 129)
 PRODUCTION_MACOS_BACKGROUND = dmg-background
 # makefile (from 'Makefile', line 275)
@@ -1366,7 +1367,6 @@ SNAP_DATA = /var/snap/code/96
 # environment
 SNAP_CONTEXT = sCYcw1kZ5vRx5cIylmkmxskr6a-GP2Q-QjU72xSyk6tejHCShsa9
 # makefile (from 'Makefile', line 15)
- 
 BUILD = Release
 # makefile (from 'env/.all.mk', line 19)
 PRODUCTION_FOLDER := build
@@ -1398,6 +1398,7 @@ GDK_PIXBUF_MODULE_FILE = /home/sasaki/snap/code/common/.cache/gdk-pixbuf-loaders
 LIB_DIRS := /usr/local/lib
 # makefile (from 'Makefile', line 192)
 _PCH := bin/Release/obj/PCH.hpp
+ 
 # makefile (from 'Makefile', line 60)
 PRODUCTION_FOLDER_RESOURCES := build
 # environment
@@ -1492,10 +1493,10 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # bin/Release/obj: could not be stat'd.
 # / (device 66312, inode 2): No files, no impossibilities so far.
 # src (device 66312, inode 4480079): No files, no impossibilities so far.
-# . (device 66312, inode 3305613): 14 files, no impossibilities.
+# . (device 66312, inode 3305613): 16 files, no impossibilities.
 # bin/Release/dep: could not be stat'd.
 
-# 14 files, no impossibilities in 6 directories.
+# 16 files, no impossibilities in 6 directories.
 
 # Implicit Rules
 
@@ -1656,7 +1657,6 @@ Makefile:
 #  File has been updated.
 #  Successfully updated.
 
- 
 bin/Release/game.dylib: bin/Release/obj/PCH.hpp.gch bin/Release/obj/Platform/Win32/WindowsPlatform.cpp.o bin/Release/obj/Platform/MacOS/MacOSPlatform.cpp.o bin/Release/obj/Platform/Unix/LinuxPlatform.cpp.o bin/Release/obj/Main.cpp.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -1675,6 +1675,7 @@ bin/Release/dep/Platform:
 	$(MKDIR) $@
 
 mkdirprod:
+ 
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
@@ -1954,10 +1955,10 @@ bin/Release/obj/PCH.hpp.gch:
 # Not a target:
 .rc:
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
- 
 .PHONY: rebuild buildprod makepch makebuild clean rmprod mkdirprod releasetoprod makeproduction
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -1994,12 +1995,12 @@ bin/Release/game.dll: bin/Release/obj/PCH.hpp.gch bin/Release/obj/Platform/Win32
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 94 / storage = 1305 B / avg = 13 B
-# current buf: size = 8162 B / used = 1305 B / count = 94 / avg = 13 B
+# strcache buffers: 1 (0) / strings = 95 / storage = 1314 B / avg = 13 B
+# current buf: size = 8162 B / used = 1314 B / count = 95 / avg = 13 B
 
-# strcache performance: lookups = 266 / hit rate = 64%
+# strcache performance: lookups = 268 / hit rate = 64%
 # hash-table stats:
-# Load=94/8192=1%, Rehash=0, Collisions=7/266=3%
-# Finished Make data base on Wed May 11 21:35:34 2022
+# Load=95/8192=1%, Rehash=0, Collisions=7/268=3%
+# Finished Make data base on Thu May 12 21:21:47 2022
 
  
