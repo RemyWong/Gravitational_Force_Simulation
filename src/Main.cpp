@@ -1,6 +1,11 @@
 #include "Platform/Platform.hpp"
 #include <cmath>
 
+
+double euclidian_distance(double x, double y);
+double theta(double x, double y);
+double grav_accel(double G, double mass, double distance);
+
 int main()
 {
 
@@ -25,10 +30,10 @@ int main()
 	const double radius[] {5.f, 10.f, 15.f}; // 10^6 m
 
 	double theta_1 {};
-	double rise_over_slope {};
 	double G_accel {};
 	double distance {};
 	double time (dt);
+	double distance_travalled {};
 
 
 
@@ -54,16 +59,24 @@ int main()
 
 		time += dt;
 
-		distance =
-		std::pow(std::pow((coords[1].x - coords[0].x), 2) + std::pow((coords[0].x - coords[1].x), 2), 0.5f);
+		distance = euclidian_distance(coords[1].x - coords[0].x, coords[1].y - coords[0].y);
 
-		rise_over_slope = (coords[1].x - coords[0].x) / (coords[1].y - coords[0].x);
-		theta_1 = std::atan(rise_over_slope);
-		G_accel = G * masses[0] * std::pow(10,30) / (std::pow(distance, 2) * std::pow(std::pow(10, 6) , 2));
+		theta_1 = theta(coords[1].x - coords[0].x, coords[1].y - coords[0].y);
 
-		coords[0].x = ((G_accel * std::pow(time, 2.f) / 2) * std::cos(theta_1)) + 200.f;
-		coords[0].y = ((G_accel * std::pow(time, 2.f) / 2) * std::sin(theta_1)) + 400.f;
-		std::cout << coords[0].x << "\n";
+		G_accel = grav_accel(G, masses[0], distance);
+
+		distance_travalled = euclidian_distance((G_accel * std::pow(time, 2.f) / 2) * std::cos(theta_1), (G_accel * std::pow(time, 2.f) / 2));
+
+		if (distance_travalled > distance){
+			coords[0].x = coords[1].x;
+			coords[0].y = coords[1].y;
+		}
+		else{
+			coords[0].x = ((G_accel * std::pow(time, 2.f) / 2) * std::cos(theta_1)) + 200.f;
+			coords[0].y = ((G_accel * std::pow(time, 2.f) / 2) * std::sin(theta_1)) + 400.f;
+		}
+
+		std::cout << G_accel << "\n";
 		// clear the window with black color
 		window.clear(sf::Color::Black);
 
@@ -95,4 +108,16 @@ int main()
 	}
 
 	return 0;
+}
+
+double euclidian_distance(double x, double y){
+	return std::pow(std::pow(x, 2) + std::pow(y, 2), 0.5);
+}
+
+double theta(double x, double y){
+	return std::atan(y / x);
+}
+
+double grav_accel(double G, double mass, double distance){
+	return G * mass * std::pow(10, 24) / (std::pow(distance, 2) * std::pow(std::pow(10, 6), 2));
 }
